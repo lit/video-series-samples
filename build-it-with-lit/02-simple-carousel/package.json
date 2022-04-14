@@ -3,8 +3,8 @@
   "private": true,
   "version": "0.0.1",
   "description": "A simple carousel component built in a Build it with Lit Youtube video.",
-  "main": "./dist/simple-carousel.js",
-  "module": "./dist/simple-carousel.js",
+  "main": "./lib/simple-carousel.js",
+  "module": "./lib/simple-carousel.js",
   "type": "module",
   "scripts": {
     "build": "tsc",
