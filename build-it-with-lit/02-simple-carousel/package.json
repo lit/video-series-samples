@@ -1,0 +1,49 @@
+{
+  "name": "simple-carousel",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A simple carousel component built in a Build it with Lit Youtube video.",
+  "main": "./lib/simple-carousel.js",
+  "module": "./lib/simple-carousel.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "npm run lint:lit-analyzer && npm run lint:eslint",
+    "lint:eslint": "eslint 'src/**/*.ts'",
+    "lint:lit-analyzer": "lit-analyzer",
+    "format": "prettier \"**/*.{cjs,html,js,json,md,ts}\" --ignore-path ./.eslintignore --write",
+    "analyze": "cem analyze --litelement --globs \"src/**/*.ts\"",
+    "analyze:watch": "cem analyze --litelement --globs \"src/**/*.ts\" --watch",
+    "serve": "wds --watch",
+    "serve:prod": "MODE=prod npm run serve"
+  },
+  "keywords": [
+    "web-components",
+    "lit-element",
+    "typescript",
+    "lit"
+  ],
+  "author": "Google LLC",
+  "license": "BSD-3-Clause",
+  "files": [
+    "*.js"
+  ],
+  "dependencies": {
+    "lit": "^2.2.2"
+  },
+  "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.5.3",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
+    "@web/dev-server": "^0.1.30",
+    "@web/dev-server-legacy": "^0.1.7",
+    "@web/dev-server-rollup": "^0.3.15",
+    "@webcomponents/webcomponentsjs": "^2.6.0",
+    "eslint": "^8.13.0",
+    "lit-analyzer": "^1.2.1",
+    "prettier": "^2.3.2",
+    "typescript": "^4.6.3"
+  },
+  "customElements": "custom-elements.json"
+}
