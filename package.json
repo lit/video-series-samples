@@ -1,0 +1,21 @@
+{
+    "name": "video-series-samples",
+    "version": "0.0.1",
+    "description": "Repository of sample code used in Lit Youtube videos.",
+    "private": true,
+    "type": "module",
+    "exports": {
+        "./simple-carousel.js": "./build-it-with-lit/02-simple-carousel/lib/simple-carousel.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/lit/video-series-samples.git"
+    },
+    "keywords": [],
+    "author": "Google LLC",
+    "license": "BSD-3-Clause",
+    "bugs": {
+        "url": "https://github.com/lit/video-series-samples/issues"
+    },
+    "homepage": "https://github.com/lit/video-series-samples#readme"
+}
