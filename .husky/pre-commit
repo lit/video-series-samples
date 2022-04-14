@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Build: build-it-with-lit/02-simple-carousel
+cd build-it-with-lit/02-simple-carousel/ && npm run build && cd -

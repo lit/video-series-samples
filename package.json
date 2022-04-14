@@ -17,5 +17,12 @@
     "bugs": {
         "url": "https://github.com/lit/video-series-samples/issues"
     },
-    "homepage": "https://github.com/lit/video-series-samples#readme"
+    "homepage": "https://github.com/lit/video-series-samples#readme",
+    "devDependencies": {
+        "husky": "^7.0.0"
+    },
+    "scripts": {
+        "prepare": "husky install",
+        "build": "tsc"
+    }
 }
