@@ -22,7 +22,8 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "simple-carousel": "file:./build-it-with-lit/02-simple-carousel/"
+        "simple-carousel": "file:./build-it-with-lit/02-simple-carousel/",
+        "lit": "^2.2.2"
     },
     "devDependencies": {
         "husky": "^7.0.0"
