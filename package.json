@@ -1,6 +1,6 @@
 {
     "name": "video-series-samples",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Repository of sample code used in Lit Youtube videos.",
     "private": true,
     "type": "module",
@@ -18,11 +18,13 @@
         "url": "https://github.com/lit/video-series-samples/issues"
     },
     "homepage": "https://github.com/lit/video-series-samples#readme",
+    "scripts": {
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "simple-carousel": "file:./build-it-with-lit/02-simple-carousel/"
+    },
     "devDependencies": {
         "husky": "^7.0.0"
-    },
-    "scripts": {
-        "prepare": "husky install",
-        "build": "tsc"
     }
 }
