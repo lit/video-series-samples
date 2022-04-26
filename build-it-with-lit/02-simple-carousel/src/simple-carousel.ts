@@ -66,6 +66,13 @@ export class SimpleCarousel extends LitElement {
   @state() private containerHeight = 0;
   @queryAssignedElements() private readonly slideElements!: HTMLElement[];
 
+  /**
+   * Return slide index in the range of [0, slideElement.length)
+   */
+  get wrappedIndex(): number {
+    return wrap(this.slideIndex, this.slideElements.length);
+  }
+
   override render() {
     const containerStyles = {
       height: `${this.containerHeight}px`,
@@ -100,46 +107,27 @@ export class SimpleCarousel extends LitElement {
     // 'slideindex' attribute and property, we can calculate the animation in
     // the 'updated' lifecycle callback.
     if (changedProperties.has("slideIndex")) {
-      const oldSlideIndex = changedProperties.get("slideIndex") as number;
-      // Prevent slideIndex from going out of bounds. Clamps the index to the
-      // range: [0, this.slideElements.length)
-      const clampedIndex = this.wrapSlide(0);
-      // Figure out if the closest path to the slide is by animating left or
-      // right.
-      const halfSlideLength = Math.floor(this.slideElements.length / 2);
-      let offset =
-        ((clampedIndex - oldSlideIndex + halfSlideLength) %
-          this.slideElements.length) -
-        halfSlideLength;
-      if (offset < -halfSlideLength) {
-        offset += this.slideElements.length;
-      }
-      if (offset > 0) {
+      const oldSlideIndex = changedProperties.get("slideIndex");
+      const advancing = this.slideIndex > oldSlideIndex;
+
+      if (advancing) {
         // Animate forwards
-        this.navigateWithAnimation(offset, SLIDE_LEFT_OUT, SLIDE_RIGHT_IN);
-      } else if (offset < 0) {
+        this.navigateWithAnimation(1, SLIDE_LEFT_OUT, SLIDE_RIGHT_IN);
+      } else {
         // Animate backwards
-        this.navigateWithAnimation(offset, SLIDE_RIGHT_OUT, SLIDE_LEFT_IN);
+        this.navigateWithAnimation(-1, SLIDE_RIGHT_OUT, SLIDE_LEFT_IN);
       }
     }
   }
 
-  /** Get next slide index by offset and wraps index */
-  private wrapSlide(offset: number): number {
-    const slideCount = this.slideElements.length;
-    return (
-      (slideCount + ((this.slideIndex + offset) % slideCount)) % slideCount
-    );
-  }
-
   navigateToNextSlide = () => {
     // Animation driven by the `updated` lifecycle.
-    this.slideIndex = this.wrapSlide(1);
+    this.slideIndex += 1;
   };
 
   navigateToPrevSlide = () => {
     // Animation driven by the `updated` lifecycle.
-    this.slideIndex = this.wrapSlide(-1);
+    this.slideIndex -= 1;
   };
 
   private async navigateWithAnimation(
@@ -148,7 +136,11 @@ export class SimpleCarousel extends LitElement {
     enteringAnimation: AnimationTuple
   ) {
     this.initializeSlides();
-    const elLeaving = this.slideElements[this.wrapSlide(-nextSlideOffset)];
+    const wrappedPriorIdx = wrap(
+      this.slideIndex - nextSlideOffset,
+      this.slideElements.length
+    );
+    const elLeaving = this.slideElements[wrappedPriorIdx];
     showSlide(elLeaving);
 
     // Animate out current element
@@ -158,7 +150,7 @@ export class SimpleCarousel extends LitElement {
     );
 
     // Entering slide
-    const newSlideEl = this.slideElements[this.slideIndex];
+    const newSlideEl = this.slideElements[this.wrappedIndex];
 
     // Show the new slide
     showSlide(newSlideEl);
@@ -184,7 +176,7 @@ export class SimpleCarousel extends LitElement {
     for (let i = 0; i < this.slideElements.length; i++) {
       const slide = this.slideElements[i];
       slide.getAnimations().forEach((anim) => anim.cancel());
-      if (i === this.slideIndex) {
+      if (i === this.wrappedIndex) {
         showSlide(slide);
       } else {
         hideSlide(slide);
@@ -203,6 +195,10 @@ function hideSlide(el: HTMLElement) {
 
 function showSlide(el: HTMLElement) {
   el.classList.remove("slide-hidden");
+}
+
+function wrap(idx: number, max: number): number {
+  return ((idx % max) + max) % max;
 }
 
 declare global {
