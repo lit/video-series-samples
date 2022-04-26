@@ -1,7 +1,7 @@
 # Video Series Samples
 
 Repository containing sample (non production) code shown in the [Lit Youtube
-series](https://www.youtube.com/channel/UCok4ZKSzM3jY7JQRMlF-DPg).
+series](https://lit.dev/youtube).
 
 ### Catalog
 
