@@ -1,7 +1,10 @@
+[![Build it with Lit simple carousel Youtube
+thumbnail](http://img.youtube.com/vi/N3DetHTpQgc/maxresdefault.jpg)]((https://www.youtube.com/watch?v=N3DetHTpQgc))
+
 # Simple Carousel
 
-This is the completed simple-carousel Lit component that accompanies the second
-Build It With Lit video.
+This is the completed simple-carousel Lit component that accompanies the [second
+Build It With Lit video](https://www.youtube.com/watch?v=N3DetHTpQgc).
 
 Install directly from Github:
 
