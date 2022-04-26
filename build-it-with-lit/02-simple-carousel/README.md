@@ -1,6 +1,24 @@
-# LitElement TypeScript starter
+[![Build it with Lit simple carousel Youtube
+thumbnail](http://img.youtube.com/vi/N3DetHTpQgc/maxresdefault.jpg)](https://www.youtube.com/watch?v=N3DetHTpQgc)
 
-This project includes a sample component using LitElement with TypeScript.
+# Simple Carousel
+
+This is the completed simple-carousel Lit component that accompanies the [second
+Build It With Lit video](https://www.youtube.com/watch?v=N3DetHTpQgc).
+
+Install directly from Github:
+
+```sh
+npm install github:lit/video-series-samples
+```
+
+Register the &lt;simple-carousel> with:
+
+```js
+import 'video-series-samples/simple-carousel.js';
+```
+
+Code is for learning purposes only.
 
 ## Setup
 
