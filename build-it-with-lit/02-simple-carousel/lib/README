@@ -2,7 +2,7 @@ Built JavaScript is committed to Github allowing this sample to be installed
 directly from Github with:
 
 ```sh
-npm install https://github.com/lit/video-series-samples.git
+npm install github:lit/video-series-samples
 ```
 
 Register the &lt;simple-carousel> with:
