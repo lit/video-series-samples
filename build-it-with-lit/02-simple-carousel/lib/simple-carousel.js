@@ -33,7 +33,7 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
      * Return slide index in the range of [0, slideElement.length)
      */
     get wrappedIndex() {
-        return wrap(this.slideIndex, this.slideElements.length);
+        return wrapIndex(this.slideIndex, this.slideElements.length);
     }
     render() {
         const containerStyles = {
@@ -67,8 +67,11 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         // the 'updated' lifecycle callback.
         if (changedProperties.has("slideIndex")) {
             const oldSlideIndex = changedProperties.get("slideIndex");
-            const advancing = this.slideIndex > oldSlideIndex;
-            if (advancing) {
+            if (oldSlideIndex === undefined) {
+                return;
+            }
+            const isAdvancing = this.slideIndex > oldSlideIndex;
+            if (isAdvancing) {
                 // Animate forwards
                 this.navigateWithAnimation(1, SLIDE_LEFT_OUT, SLIDE_RIGHT_IN);
             }
@@ -80,8 +83,8 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
     }
     async navigateWithAnimation(nextSlideOffset, leavingAnimation, enteringAnimation) {
         this.initializeSlides();
-        const wrappedPriorIdx = wrap(this.slideIndex - nextSlideOffset, this.slideElements.length);
-        const elLeaving = this.slideElements[wrappedPriorIdx];
+        const leavingElIndex = wrapIndex(this.slideIndex - nextSlideOffset, this.slideElements.length);
+        const elLeaving = this.slideElements[leavingElIndex];
         showSlide(elLeaving);
         // Animate out current element
         const leavingAnim = elLeaving.animate(leavingAnimation[0], leavingAnimation[1]);
@@ -170,7 +173,7 @@ function hideSlide(el) {
 function showSlide(el) {
     el.classList.remove("slide-hidden");
 }
-function wrap(idx, max) {
+function wrapIndex(idx, max) {
     return ((idx % max) + max) % max;
 }
 //# sourceMappingURL=simple-carousel.js.map
