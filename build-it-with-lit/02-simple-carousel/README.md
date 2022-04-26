@@ -1,5 +1,5 @@
 [![Build it with Lit simple carousel Youtube
-thumbnail](http://img.youtube.com/vi/N3DetHTpQgc/maxresdefault.jpg)]((https://www.youtube.com/watch?v=N3DetHTpQgc))
+thumbnail](http://img.youtube.com/vi/N3DetHTpQgc/maxresdefault.jpg)](https://www.youtube.com/watch?v=N3DetHTpQgc)
 
 # Simple Carousel
 
