@@ -12,19 +12,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 let SlideButton = class SlideButton extends LitElement {
-    constructor() {
-        super(...arguments);
-        this.handleKeyPress = () => {
-            this.dispatchEvent(new Event("click"));
-        };
-    }
     render() {
         return html ` <div
       id="btn"
       tabindex="0"
       role="button"
       aria-pressed="false"
-      @keypress=${this.handleKeyPress}
     >
       <slot></slot>
     </div>`;

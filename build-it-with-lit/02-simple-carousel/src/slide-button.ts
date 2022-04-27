@@ -42,15 +42,10 @@ class SlideButton extends LitElement {
       tabindex="0"
       role="button"
       aria-pressed="false"
-      @keypress=${this.handleKeyPress}
     >
       <slot></slot>
     </div>`;
   }
-
-  handleKeyPress = () => {
-    this.dispatchEvent(new Event("click"));
-  };
 }
 
 declare global {
