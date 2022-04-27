@@ -78,10 +78,7 @@ export class SimpleCarousel extends LitElement {
       height: `${this.containerHeight}px`,
     };
 
-    return html`<slide-button
-        onClick=${this.navigateToPrevSlide}
-        @click=${this.navigateToPrevSlide}
-      >
+    return html`<slide-button @click=${this.navigateToPrevSlide}>
         ${BOOTSTRAP_CHEVRON_LEFT}
       </slide-button>
 
@@ -89,10 +86,7 @@ export class SimpleCarousel extends LitElement {
         <slot></slot>
       </div>
 
-      <slide-button
-        onClick=${this.navigateToNextSlide}
-        @click=${this.navigateToNextSlide}
-      >
+      <slide-button @click=${this.navigateToNextSlide}>
         ${BOOTSTRAP_CHEVRON_RIGHT}
       </slide-button>`;
   }
@@ -123,15 +117,15 @@ export class SimpleCarousel extends LitElement {
     }
   }
 
-  navigateToNextSlide = () => {
+  navigateToNextSlide() {
     // Animation driven by the `updated` lifecycle.
     this.slideIndex += 1;
-  };
+  }
 
-  navigateToPrevSlide = () => {
+  navigateToPrevSlide() {
     // Animation driven by the `updated` lifecycle.
     this.slideIndex -= 1;
-  };
+  }
 
   private async navigateWithAnimation(
     nextSlideOffset: number,

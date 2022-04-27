@@ -20,14 +20,6 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         // Assume this is always a valid slide index.
         this.slideIndex = 0;
         this.containerHeight = 0;
-        this.navigateToNextSlide = () => {
-            // Animation driven by the `updated` lifecycle.
-            this.slideIndex += 1;
-        };
-        this.navigateToPrevSlide = () => {
-            // Animation driven by the `updated` lifecycle.
-            this.slideIndex -= 1;
-        };
     }
     /**
      * Return slide index in the range of [0, slideElement.length)
@@ -39,10 +31,7 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         const containerStyles = {
             height: `${this.containerHeight}px`,
         };
-        return html `<slide-button
-        onClick=${this.navigateToPrevSlide}
-        @click=${this.navigateToPrevSlide}
-      >
+        return html `<slide-button @click=${this.navigateToPrevSlide}>
         ${BOOTSTRAP_CHEVRON_LEFT}
       </slide-button>
 
@@ -50,10 +39,7 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         <slot></slot>
       </div>
 
-      <slide-button
-        onClick=${this.navigateToNextSlide}
-        @click=${this.navigateToNextSlide}
-      >
+      <slide-button @click=${this.navigateToNextSlide}>
         ${BOOTSTRAP_CHEVRON_RIGHT}
       </slide-button>`;
     }
@@ -80,6 +66,14 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
                 this.navigateWithAnimation(-1, SLIDE_RIGHT_OUT, SLIDE_LEFT_IN);
             }
         }
+    }
+    navigateToNextSlide() {
+        // Animation driven by the `updated` lifecycle.
+        this.slideIndex += 1;
+    }
+    navigateToPrevSlide() {
+        // Animation driven by the `updated` lifecycle.
+        this.slideIndex -= 1;
     }
     async navigateWithAnimation(nextSlideOffset, leavingAnimation, enteringAnimation) {
         this.initializeSlides();
