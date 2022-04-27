@@ -22,12 +22,18 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         this.containerHeight = 0;
         this.navigateToNextSlide = () => {
             // Animation driven by the `updated` lifecycle.
-            this.slideIndex = this.wrapSlide(1);
+            this.slideIndex += 1;
         };
         this.navigateToPrevSlide = () => {
             // Animation driven by the `updated` lifecycle.
-            this.slideIndex = this.wrapSlide(-1);
+            this.slideIndex -= 1;
         };
+    }
+    /**
+     * Return slide index in the range of [0, slideElement.length)
+     */
+    get wrappedIndex() {
+        return wrapIndex(this.slideIndex, this.slideElements.length);
     }
     render() {
         const containerStyles = {
@@ -61,41 +67,29 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         // the 'updated' lifecycle callback.
         if (changedProperties.has("slideIndex")) {
             const oldSlideIndex = changedProperties.get("slideIndex");
-            // Prevent slideIndex from going out of bounds. Clamps the index to the
-            // range: [0, this.slideElements.length)
-            const clampedIndex = this.wrapSlide(0);
-            // Figure out if the closest path to the slide is by animating left or
-            // right.
-            const halfSlideLength = Math.floor(this.slideElements.length / 2);
-            let offset = ((clampedIndex - oldSlideIndex + halfSlideLength) %
-                this.slideElements.length) -
-                halfSlideLength;
-            if (offset < -halfSlideLength) {
-                offset += this.slideElements.length;
+            if (oldSlideIndex === undefined) {
+                return;
             }
-            if (offset > 0) {
+            const isAdvancing = this.slideIndex > oldSlideIndex;
+            if (isAdvancing) {
                 // Animate forwards
-                this.navigateWithAnimation(offset, SLIDE_LEFT_OUT, SLIDE_RIGHT_IN);
+                this.navigateWithAnimation(1, SLIDE_LEFT_OUT, SLIDE_RIGHT_IN);
             }
-            else if (offset < 0) {
+            else {
                 // Animate backwards
-                this.navigateWithAnimation(offset, SLIDE_RIGHT_OUT, SLIDE_LEFT_IN);
+                this.navigateWithAnimation(-1, SLIDE_RIGHT_OUT, SLIDE_LEFT_IN);
             }
         }
     }
-    /** Get next slide index by offset and wraps index */
-    wrapSlide(offset) {
-        const slideCount = this.slideElements.length;
-        return ((slideCount + ((this.slideIndex + offset) % slideCount)) % slideCount);
-    }
     async navigateWithAnimation(nextSlideOffset, leavingAnimation, enteringAnimation) {
         this.initializeSlides();
-        const elLeaving = this.slideElements[this.wrapSlide(-nextSlideOffset)];
+        const leavingElIndex = wrapIndex(this.slideIndex - nextSlideOffset, this.slideElements.length);
+        const elLeaving = this.slideElements[leavingElIndex];
         showSlide(elLeaving);
         // Animate out current element
         const leavingAnim = elLeaving.animate(leavingAnimation[0], leavingAnimation[1]);
         // Entering slide
-        const newSlideEl = this.slideElements[this.slideIndex];
+        const newSlideEl = this.slideElements[this.wrappedIndex];
         // Show the new slide
         showSlide(newSlideEl);
         // Teleport it out of view and animate it in
@@ -114,7 +108,7 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         for (let i = 0; i < this.slideElements.length; i++) {
             const slide = this.slideElements[i];
             slide.getAnimations().forEach((anim) => anim.cancel());
-            if (i === this.slideIndex) {
+            if (i === this.wrappedIndex) {
                 showSlide(slide);
             }
             else {
@@ -178,5 +172,8 @@ function hideSlide(el) {
 }
 function showSlide(el) {
     el.classList.remove("slide-hidden");
+}
+function wrapIndex(idx, max) {
+    return ((idx % max) + max) % max;
 }
 //# sourceMappingURL=simple-carousel.js.map
