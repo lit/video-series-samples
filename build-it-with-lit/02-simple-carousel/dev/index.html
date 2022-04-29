@@ -34,6 +34,14 @@
         width: 100%;
         height: auto;
       }
+
+      /*
+      Hide the simple-carousel element until it is defined, preventing a flash
+      of unstyled content.
+      */
+      simple-carousel:not(:defined) > * {
+        display: none;
+      }
     </style>
   </head>
   <body>
