@@ -1,0 +1,9 @@
+node_modules/
+/test/
+custom-elements.json
+# top level source
+*.js.map
+*.d.ts
+*.d.ts.map
+.wireit
+lib/
