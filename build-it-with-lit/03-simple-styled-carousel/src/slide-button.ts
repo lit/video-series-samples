@@ -35,7 +35,6 @@ class SlideButton extends LitElement {
       );
       background-color: var(--carousel-active-btn-background-color);
       color: var(--carousel-active-btn-color);
-
     }
 
     ::slotted(svg) {
@@ -46,6 +45,7 @@ class SlideButton extends LitElement {
 
   override render() {
     return html`<div
+      part="internal-btn"
       id="btn"
       tabindex="0"
       role="button"
