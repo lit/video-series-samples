@@ -15,8 +15,8 @@ export const BOOTSTRAP_CHEVRON_RIGHT = html`<svg
 >
   <path
     fill-rule="evenodd"
-    stroke="#101423"
-    fill="#101423"
+    stroke="currentColor"
+    fill="currentColor"
     d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"
   />
 </svg>`;
@@ -29,8 +29,8 @@ export const BOOTSTRAP_CHEVRON_LEFT = html`<svg
 >
   <path
     fill-rule="evenodd"
-    stroke="#101423"
-    fill="#101423"
+    stroke="currentColor"
+    fill="currentColor"
     d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
   />
 </svg>`;
