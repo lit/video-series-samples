@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Third Demo Carousel</title>
+    <script type="module" src="../lib/simple-carousel.js"></script>
+    <style>
+      :root {
+        font-family: Arial;
+        background-color: #f4f4f4;
+      }
+
+      simple-carousel {
+        color: white;
+        filter: drop-shadow(0 0.8em 0 rgb(212, 34, 33));
+      }
+      simple-carousel::part(container) {
+        border-radius: unset;
+        margin: unset;
+        box-shadow: unset;
+        background-color: rgb(253, 133, 9);
+      }
+      simple-carousel::part(buttons) {
+        display: none;
+      }
+
+      body {
+        /* Center the carousel on the page */
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /*
+      Hide the simple-carousel element until it is defined, preventing a flash
+      of unstyled content.
+      */
+      simple-carousel:not(:defined) > * {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <simple-carousel slideindex="0">
+      <h1>Welcome to Lit!</h1>
+      <section>
+        <h1>██ █████ █ ███</h1>
+        <p>█████ ████ ██ ███████ █ █</p>
+      </section>
+      <section>
+        <h1>█ ██████ ██ ████</h1>
+        <p>███████ █ ██ ███████ ███ ████████</p>
+      </section>
+    </simple-carousel>
+
+    <script>
+      setInterval(() => {
+        document.querySelector("simple-carousel").slideIndex++;
+      }, 3000);
+    </script>
+  </body>
+</html>
