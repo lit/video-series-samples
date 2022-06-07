@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>&lt;simple-carousel> Demo</title>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/lit/polyfill-support.js"></script>
+    <script type="module" src="../lib/simple-carousel.js"></script>
+    <style>
+      :root {
+        background-color: #f4f4f4;
+        font-family: Arial;
+      }
+
+      body {
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+
+      simple-carousel {
+        width: 50vw;
+        max-width: 600px;
+
+        --shadow: #293198;
+        --highlight: #ceffff;
+      }
+
+      simple-carousel img {
+        width: 100%;
+        height: auto;
+      }
+
+      /*
+      Hide the simple-carousel element until it is defined, preventing a flash
+      of unstyled content.
+      */
+      simple-carousel:not(:defined) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <simple-carousel slideindex="0">
+      <section style="text-align: center">
+        <img
+          src="./lit-logo.svg"
+          style="max-height: 50vh"
+          alt="Lit library logo"
+        />
+        <h1>&lt;simple-carousel></h1>
+      </section>
+
+      <section>
+        <h1>🔥Built using <a href="https://lit.dev">Lit!</a>🔥</h1>
+      </section>
+
+      <section>
+        <h1>Use directly in HTML:</h1>
+        <code>
+          <pre>
+&lt;simple-carousel slideindex="0">
+  &lt;h1>First slide!&lt;/h1>
+  &lt;div>A second slide!&lt;/div>
+  &lt;div>
+    &lt;h1>Third slide&lt;/h1>
+  &lt;/div>
+&lt;/simple-carousel>
+          </pre>
+        </code>
+      </section>
+
+      <p>Enjoy learning with this code, and please do not use this component in production!</p>
+    </simple-carousel>
+  </body>
+</html>
