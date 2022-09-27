@@ -13,7 +13,8 @@ import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators.js";
 let SlideButton = class SlideButton extends LitElement {
     render() {
-        return html ` <div
+        return html `<div
+      part="internal-btn"
       id="btn"
       tabindex="0"
       role="button"
@@ -34,14 +35,21 @@ SlideButton.styles = css `
       align-items: center;
       justify-content: center;
 
-      box-shadow: var(--shadow, gray) 0.2em 0.2em 0.4em,
-        var(--highlight, white) -0.1em -0.1em 0.2em;
+      box-shadow: var(
+        --carousel-box-shadow,
+        #293198 0.2em 0.2em 0.4em,
+        #ceffff -0.1em -0.1em 0.2em
+      );
     }
 
-    #btn:active:hover,
-    #btn:hover:active {
-      box-shadow: inset var(--shadow, gray) 0.2em 0.2em 0.4em,
-        inset var(--highlight, white) -0.1em -0.1em 0.2em;
+    #btn:active {
+      box-shadow: var(
+        --carousel-active-btn-box-shadow,
+        inset #293198 0.2em 0.2em 0.4em,
+        inset #ceffff -0.1em -0.1em 0.2em
+      );
+      background-color: var(--carousel-active-btn-background-color);
+      color: var(--carousel-active-btn-color);
     }
 
     ::slotted(svg) {
