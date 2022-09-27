@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Second Demo Carousel</title>
+    <script type="module" src="../lib/simple-carousel.js"></script>
+    <style>
+      :root {
+        background-color: #f4f4f4;
+        font-family: Arial;
+      }
+      simple-carousel::part(container) {
+        border-radius: unset;
+        margin: unset;
+        box-shadow: unset;
+        background-color: rgb(215, 218, 222);
+      }
+      simple-carousel::part(buttons) {
+        border-radius: unset;
+        height: 100%;
+        box-shadow: unset;
+        background-color: rgb(20, 150, 241);
+      }
+      simple-carousel {
+        filter: drop-shadow(-1em -1em 0 rgb(6, 4, 24));
+      }
+      simple-carousel::part(buttons):active {
+        background-color: rgb(247, 130, 8);
+        color: white;
+      }
+
+      body {
+        /* Center the carousel on the page */
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /*
+      Hide the simple-carousel element until it is defined, preventing a flash
+      of unstyled content.
+      */
+      simple-carousel:not(:defined) {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <simple-carousel slideindex="0">
+      <h1>Welcome to Lit!</h1>
+      <section>
+        <h1>██ █████ █ ███</h1>
+        <p>█████ ████ ██ ███████ █ █</p>
+      </section>
+      <section>
+        <h1>█ ██████ ██ ████</h1>
+        <p>███████ █ ██ ███████ ███ ████████</p>
+      </section>
+    </simple-carousel>
+  </body>
+</html>

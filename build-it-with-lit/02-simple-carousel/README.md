@@ -1,10 +1,15 @@
 [![Build it with Lit simple carousel Youtube
 thumbnail](http://img.youtube.com/vi/2RftvylEtrE/maxresdefault.jpg)](https://www.youtube.com/watch?v=2RftvylEtrE)
 
+<!-- TODO: Replace with thumbnail and video -->
+
+[![Build it with Lit style the carousel Youtube thumbnail](http://img.youtube.com/vi/2RftvylEtrE/maxresdefault.jpg)](https://example.com)
+
 # Simple Carousel
 
 This is the completed simple-carousel Lit component that accompanies the [second
-Build It With Lit video](https://www.youtube.com/watch?v=2RftvylEtrE).
+Build It With Lit video](https://www.youtube.com/watch?v=2RftvylEtrE), and has a
+public styling interface added in the [third Build It With Lit video](TODO).
 
 Install directly from Github:
 
@@ -15,10 +20,38 @@ npm install github:lit/video-series-samples
 Register the &lt;simple-carousel> with:
 
 ```js
-import 'video-series-samples/simple-carousel.js';
+import "video-series-samples/simple-carousel.js";
 ```
 
 Code is for learning purposes only.
+
+## Styling
+
+### Custom Properties
+
+| Name                                     | Default                                                              | Description                                         |
+| ---------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------- |
+| `--carousel-box-shadow`                  | `#293198 0.2em 0.2em 0.4em, #ceffff -0.1em -0.1em 0.2em`             | `box-shadow` of the carousel container and buttons  |
+| `--carousel-active-btn-box-shadow`       | `inset #293198 0.2em 0.2em 0.4em, inset #ceffff -0.1em -0.1em 0.2em` | `box-shadow` of the pressed carousel buttons        |
+| `--carousel-active-btn-background-color` | `transparent`                                                        | `background-color` of the pressed carousel buttons  |
+| `--carousel-active-btn-color`            | `inherit`                                                            | Chevron svg `color` of the pressed carousel buttons |
+
+### Shadow Parts
+
+The following [CSS shadow
+parts](https://developer.mozilla.org/en-US/docs/Web/CSS/::part) are exported,
+which you can style with additional rules not covered by the above CSS custom
+properties.
+
+| Part name      | Exported by       | Description                                          |
+| -------------- | ----------------- | ---------------------------------------------------- |
+| `container`    | `simple-carousel` | The container for the simple-carousel                |
+| `buttons`      | `simple-carousel` | All the button nodes including left and right button |
+| `left-button`  | `simple-carousel` | Left simple-carousel button                          |
+| `right-button` | `simple-carousel` | Right simple-carousel button                         |
+| `internal-btn` | `slide-button`    | Container for the button                             |
+
+# Development
 
 ## Setup
 
