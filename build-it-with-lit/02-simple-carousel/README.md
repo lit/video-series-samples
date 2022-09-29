@@ -1,9 +1,7 @@
 [![Build it with Lit simple carousel Youtube
 thumbnail](http://img.youtube.com/vi/2RftvylEtrE/maxresdefault.jpg)](https://www.youtube.com/watch?v=2RftvylEtrE)
 
-<!-- TODO: Replace with thumbnail and video -->
-
-[![Build it with Lit style the carousel Youtube thumbnail](http://img.youtube.com/vi/2RftvylEtrE/maxresdefault.jpg)](https://example.com)
+[![Build it with Lit style the carousel Youtube thumbnail](http://img.youtube.com/vi/Xt7blcyuw5s/maxresdefault.jpg)](https://www.youtube.com/watch?v=Xt7blcyuw5s)
 
 # Simple Carousel
 
