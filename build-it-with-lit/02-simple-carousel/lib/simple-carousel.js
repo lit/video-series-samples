@@ -31,15 +31,23 @@ let SimpleCarousel = class SimpleCarousel extends LitElement {
         const containerStyles = {
             height: `${this.containerHeight}px`,
         };
-        return html `<slide-button @click=${this.navigateToPrevSlide}>
+        return html `<slide-button
+        part="buttons left-buton"
+        exportparts="internal-btn : buttons"
+        @click=${this.navigateToPrevSlide}
+      >
         ${BOOTSTRAP_CHEVRON_LEFT}
       </slide-button>
 
-      <div id="container" style="${styleMap(containerStyles)}">
+      <div part="container" id="container" style="${styleMap(containerStyles)}">
         <slot></slot>
       </div>
 
-      <slide-button @click=${this.navigateToNextSlide}>
+      <slide-button
+        part="buttons right-buton"
+        exportparts="internal-btn : buttons"
+        @click=${this.navigateToNextSlide}
+      >
         ${BOOTSTRAP_CHEVRON_RIGHT}
       </slide-button>`;
     }
@@ -141,8 +149,11 @@ SimpleCarousel.styles = css `
       overflow: hidden;
       position: relative;
 
-      box-shadow: var(--shadow, gray) 0.3em 0.3em 0.4em,
-        var(--highlight, white) -0.1em -0.1em 0.3em;
+      box-shadow: var(
+        --carousel-box-shadow,
+        #293198 0.2em 0.2em 0.4em,
+        #ceffff -0.1em -0.1em 0.2em
+      );
     }
   `;
 __decorate([
